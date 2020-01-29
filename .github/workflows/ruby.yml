@@ -26,15 +26,12 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
-    - name: Debugging env vars
     - name: Setup file system permissions
       run: |
         sudo chown -R circleci $GITHUB_WORKSPACE
         sudo chmod -R 777 $GITHUB_WORKSPACE
         sudo chown -R circleci /github
         sudo chmod -R 777 /github
-    - name: Debugging connection to database
-      run: dockerize -wait tcp://postgres:5432 -timeout 1m
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: bundle install --path vendor/bundle
