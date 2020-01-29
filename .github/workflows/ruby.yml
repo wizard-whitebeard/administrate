@@ -5,8 +5,12 @@ on: [push]
 jobs:
   build:
 
+    strategy:
+      matrix:
+        image: [ruby:2.5.0-node-browsers, ruby:2.6.3-node-browsers-legacy]
+
     runs-on: ubuntu-latest
-    container: circleci/ruby:2.5.0-node-browsers
+    container: circleci/{{mastrix.image}}
 
     env:
       PGHOST: postgres
@@ -22,6 +26,7 @@ jobs:
           POSTGRES_PASSWORD: ""
         ports:
         - 5432:5432
+        # Add a health check
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
