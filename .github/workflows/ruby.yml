@@ -45,7 +45,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: vendor/bundle
-        key: administrate-app-${{ hashFiles('Gemfile.lock') }}
+        key: administrate-${{ matrix.image }}-${{ hashFiles('Gemfile.lock') }}
     - name: Install dependencies
       run: bundle install --path vendor/bundle
     - name: Setup environment configuration
