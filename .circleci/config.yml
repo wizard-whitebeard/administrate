@@ -17,7 +17,7 @@ jobs:
           POSTGRES_DB: ruby26
           POSTGRES_PASSWORD: ""
 
-      working_directory: ~/administrate
+    working_directory: ~/administrate
 
     steps:
       - checkout
