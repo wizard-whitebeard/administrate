@@ -27,17 +27,24 @@ jobs:
 
     steps:
     - name: Debugging env vars
-      run: echo ${{ job.services.postgres }}
     - name: Setup file system permissions
       run: |
         sudo chown -R circleci $GITHUB_WORKSPACE
         sudo chmod -R 777 $GITHUB_WORKSPACE
+        sudo chown -R circleci /github
+        sudo chmod -R 777 /github
+    - name: Debugging connection to database
+      run: dockerize -wait tcp://postgres:5432 -timeout 1m
     - uses: actions/checkout@v2
-    - name: Build and test with Rake
-      run: |
-        bundle install --path vendor/bundle
-        cp .sample.env .env
-        bundle exec rake db:setup
-        bundle exec rake
-        bundle exec appraisal install
-        bundle exec appraisal rake
+    - name: Install dependencies
+      run: bundle install --path vendor/bundle
+    - name: Setup environment configuration
+      run: cp .sample.env .env
+    - name: Setup database
+      run: bundle exec rake db:setup
+    - name: Run tests
+      run: bundle exec rake
+    - name: Install appraisal
+      run: bundle exec appraisal install
+    - name: run appraisal
+      run: bundle exec appraisal rake
