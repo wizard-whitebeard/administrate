@@ -26,13 +26,13 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
-    - uses: actions/checkout@v2
     - name: Debugging env vars
       run: echo $GITHUB_WORKSPACE
     - name: Setup file system permissions
       run: |
         sudo chown -R circleci $GITHUB_WORKSPACE
         sudo chmod -R 777 $GITHUB_WORKSPACE
+    - uses: actions/checkout@v2
     - name: Build and test with Rake
       run: |
         bundle install --path vendor/bundle
