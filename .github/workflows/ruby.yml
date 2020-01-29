@@ -7,10 +7,10 @@ jobs:
 
     strategy:
       matrix:
-        image: [ruby:2.5.0-node-browsers, ruby:2.6.3-node-browsers-legacy]
+        image: [2.5.0-node-browsers, 2.6.3-node-browsers-legacy]
 
     runs-on: ubuntu-latest
-    container: circleci/{{mastrix.image}}
+    container: circleci/{{ruby-matrix.image}}
 
     env:
       PGHOST: postgres
