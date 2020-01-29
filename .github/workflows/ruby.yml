@@ -9,7 +9,7 @@ jobs:
     container: circleci/ruby:2.5.0-node-browsers
 
     env:
-      PGHOST: localhost
+      PGHOST: postgres
       PGUSER: administrate
       RAILS_ENV: test
 
@@ -27,7 +27,7 @@ jobs:
 
     steps:
     - name: Debugging env vars
-      run: echo $GITHUB_WORKSPACE
+      run: echo ${{ job.services.postgres }}
     - name: Setup file system permissions
       run: |
         sudo chown -R circleci $GITHUB_WORKSPACE
@@ -36,7 +36,6 @@ jobs:
     - name: Build and test with Rake
       run: |
         bundle install --path vendor/bundle
-        dockerize -wait tcp://localhost:5432 -timeout 1m
         cp .sample.env .env
         bundle exec rake db:setup
         bundle exec rake
