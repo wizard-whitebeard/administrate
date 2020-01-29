@@ -2,10 +2,9 @@
 version: 2.1
 
 
-build:
+jobs:
 
   ruby-26:
-    working_directory: ~/administrate
     docker:
       - image: circleci/ruby:2.6.3-node-browsers-legacy
         environment:
@@ -17,6 +16,8 @@ build:
           POSTGRES_USER: administrate
           POSTGRES_DB: ruby26
           POSTGRES_PASSWORD: ""
+
+      working_directory: ~/administrate
 
       steps:
         - checkout
@@ -41,6 +42,6 @@ build:
 
 workflows:
   version: 2
-  multiple-rubies:
+  build:
     jobs:
       - ruby-26
