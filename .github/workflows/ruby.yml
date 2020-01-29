@@ -22,10 +22,11 @@ jobs:
           POSTGRES_PASSWORD: ""
         ports:
         - 5432:5432
-        # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
+    # This docker file changes sets USER to circleci instead of using the default user, so we need to update file permissions for this image to work on GH Actions.
+    # See https://help.github.com/en/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners#docker-container-filesystem
     - name: Setup file system permissions
       run: |
         sudo chown -R circleci $GITHUB_WORKSPACE
@@ -33,6 +34,11 @@ jobs:
         sudo chown -R circleci /github
         sudo chmod -R 777 /github
     - uses: actions/checkout@v2
+    - name: Cache dependencies
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: administrate-${{ hashFiles('Gemfile.lock') }}
     - name: Install dependencies
       run: bundle install --path vendor/bundle
     - name: Setup environment configuration
@@ -43,5 +49,5 @@ jobs:
       run: bundle exec rake
     - name: Install appraisal
       run: bundle exec appraisal install
-    - name: run appraisal
+    - name: Run appraisal
       run: bundle exec appraisal rake
