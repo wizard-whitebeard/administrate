@@ -36,8 +36,6 @@ jobs:
 
       # Run the tests
       - run: bundle exec rake
-      - run: bundle exec appraisal install
-      - run: bundle exec appraisal rake
 
 
 workflows:
