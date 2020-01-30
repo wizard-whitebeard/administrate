@@ -1,0 +1,47 @@
+name: Containers
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    container: circleci/ruby:2.6.3-node-browsers-legacy
+
+    env:
+      PGHOST: postgres
+      PGUSER: administrate
+      RAILS_ENV: test
+
+    services:
+      postgres:
+        image: postgres:10.1-alpine
+        env:
+          POSTGRES_USER: administrate
+          POSTGRES_DB: ruby25
+          POSTGRES_PASSWORD: ""
+        ports:
+        - 5432:5432
+        # Add a health check
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+    # This docker file changes sets USER to circleci instead of using the default user, so we need to update file permissions for this image to work on GH Actions.
+    # See https://help.github.com/en/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners#docker-container-filesystem
+    - name: Setup file system permissions
+      run: |
+        sudo chown -R circleci $GITHUB_WORKSPACE
+        sudo chmod -R 777 $GITHUB_WORKSPACE
+        sudo chown -R circleci /github
+        sudo chmod -R 777 /github
+        sudo chown -R circleci /__w/_temp
+        sudo chmod -R 777 /__w/_temp
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: bundle install --path vendor/bundle
+    - name: Setup environment configuration
+      run: cp .sample.env .env
+    - name: Setup database
+      run: bundle exec rake db:setup
+    - name: Run tests
+      run: bundle exec rake
