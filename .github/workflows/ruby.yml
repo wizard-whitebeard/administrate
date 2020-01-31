@@ -34,11 +34,9 @@ jobs:
     # See https://help.github.com/en/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners#docker-container-filesystem
     - name: Setup file system permissions
       run: |
-        sudo chown -R circleci $GITHUB_WORKSPACE
+        sudo chown -R circleci $GITHUB_WORKSPACE /github /__w/_temp
         sudo chmod -R 777 $GITHUB_WORKSPACE
-        sudo chown -R circleci /github
         sudo chmod -R 777 /github
-        sudo chown -R circleci /__w/_temp
         sudo chmod -R 777 /__w/_temp
     - uses: actions/checkout@v2
     - name: Cache dependencies
