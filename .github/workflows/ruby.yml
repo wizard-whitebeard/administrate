@@ -35,9 +35,7 @@ jobs:
     - name: Setup file system permissions
       run: |
         sudo chown -R circleci $GITHUB_WORKSPACE /github /__w/_temp
-        sudo chmod -R 777 $GITHUB_WORKSPACE
-        sudo chmod -R 777 /github
-        sudo chmod -R 777 /__w/_temp
+        sudo chmod -R 777 $GITHUB_WORKSPACE /github /__w/_temp
     - uses: actions/checkout@v2
     - name: Cache dependencies
       uses: actions/cache@v1
