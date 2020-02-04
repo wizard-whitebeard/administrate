@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      PGHOST: postgres
+      PGHOST: localhost
       PGUSER: administrate
       RAILS_ENV: test
 
