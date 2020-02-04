@@ -1,4 +1,4 @@
-name: Containers
+name: Build
 
 on: [push]
 
@@ -7,10 +7,9 @@ jobs:
 
     strategy:
       matrix:
-        image: [2.5.0-node-browsers, 2.6.3-node-browsers-legacy]
+        ruby: [2.5, 2.6.3]
 
     runs-on: ubuntu-latest
-    container: circleci/ruby:${{ matrix.image }}
 
     env:
       PGHOST: postgres
@@ -30,12 +29,11 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
-    # This docker file changes sets USER to circleci instead of using the default user, so we need to update file permissions for this image to work on GH Actions.
-    # See https://help.github.com/en/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners#docker-container-filesystem
-    - name: Setup file system permissions
-      run: |
-        sudo chmod -R 777 $GITHUB_WORKSPACE /github /__w/_temp
     - uses: actions/checkout@v2
+    - name: Setup Ruby
+      uses: eregon/use-ruby-action@master
+      with:
+        ruby-version: ${{ matrix.ruby }}
     - name: Cache dependencies
       uses: actions/cache@v1
       with:
