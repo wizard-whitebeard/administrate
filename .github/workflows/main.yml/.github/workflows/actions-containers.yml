@@ -1,0 +1,55 @@
+name: Containers
+
+on: [push]
+
+jobs:
+  build:
+
+    strategy:
+      matrix:
+        image: [2.5.0-node-browsers, 2.6.3-node-browsers-legacy]
+
+    runs-on: ubuntu-latest
+    container: circleci/ruby:${{ matrix.image }}
+
+    env:
+      PGHOST: postgres
+      PGUSER: administrate
+      RAILS_ENV: test
+
+    services:
+      postgres:
+        image: postgres:10.1-alpine
+        env:
+          POSTGRES_USER: administrate
+          POSTGRES_DB: ruby25
+          POSTGRES_PASSWORD: ""
+        ports:
+        - 5432:5432
+        # Add a health check
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+    # This docker file changes sets USER to circleci instead of using the default user, so we need to update file permissions for this image to work on GH Actions.
+    # See https://help.github.com/en/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners#docker-container-filesystem
+    - name: Setup file system permissions
+      run: |
+        sudo chmod -R 777 $GITHUB_WORKSPACE /github /__w/_temp
+    - uses: actions/checkout@v2
+    - name: Cache dependencies
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: administrate-${{ matrix.image }}-${{ hashFiles('Gemfile.lock') }}
+    - name: Install dependencies
+      run: bundle install --path vendor/bundle
+    - name: Setup environment configuration
+      run: cp .sample.env .env
+    - name: Setup database
+      run: bundle exec rake db:setup
+    - name: Run tests
+      run: bundle exec rake
+    - name: Install appraisal
+      run: bundle exec appraisal install
+    - name: Run appraisal
+      run: bundle exec appraisal rake
