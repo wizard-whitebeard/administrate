@@ -9,4 +9,4 @@ jobs:
 
     steps:
     - name: Print environment variables
-      run: echo ${env}
+      run: echo $env
