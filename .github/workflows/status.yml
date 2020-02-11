@@ -1,4 +1,4 @@
-name: Print status info
+name: Status - print info
 
 on: [status]
 
