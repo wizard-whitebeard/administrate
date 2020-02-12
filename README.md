@@ -8,7 +8,7 @@
 A framework for creating flexible, powerful admin dashboards in Rails.
 [Try the demo][demo].
 
-### Warning:
+
 
 Administrate is still pre-1.0,
 and there may be occasional breaking changes to the API.
