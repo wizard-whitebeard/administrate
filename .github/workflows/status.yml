@@ -1,4 +1,4 @@
-name: Status - print info
+name: Update badge when status changes
 
 on: [status]
 
