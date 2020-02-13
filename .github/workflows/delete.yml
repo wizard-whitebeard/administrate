@@ -1,4 +1,4 @@
-name: Delete - print env
+name: Notify team when branch or tag is deleted
 
 on: [delete]
 
