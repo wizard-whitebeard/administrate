@@ -6,7 +6,7 @@
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 
 A framework for creating flexible, powerful admin dashboards in Rails.
-
+[Try the demo][demo].
 
 ### Warning:
 
