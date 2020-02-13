@@ -1,4 +1,4 @@
-name: Issue Comment
+name: Sync issue comments to external system
 
 on: [issue_comment]
 
