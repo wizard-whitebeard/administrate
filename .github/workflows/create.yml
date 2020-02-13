@@ -1,4 +1,4 @@
-name: Create - print info
+name: Notify team when new branch or tag is created
 
 on: [create]
 
