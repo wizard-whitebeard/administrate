@@ -1,5 +1,4 @@
-name: Check suite - print env
-
+name: Do something when a check suite finishes
 on: [check_suite]
 
 jobs:
