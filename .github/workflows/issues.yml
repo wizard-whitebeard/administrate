@@ -1,4 +1,4 @@
-name: Issues - print env
+name: Manage labels for issues
 
 on: [issues]
 
