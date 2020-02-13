@@ -1,4 +1,4 @@
-name: Check run - print env
+name: Notify team when check run completes
 
 on: [check_run]
 
