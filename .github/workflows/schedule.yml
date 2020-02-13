@@ -1,4 +1,4 @@
-name: Schedule - print env
+name: Triage issues
 
 on:
   schedule:
