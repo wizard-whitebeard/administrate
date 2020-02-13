@@ -1,4 +1,4 @@
-name: Pull request - print env
+name: Update external issue tracker with PR state
 
 on: 
   pull_request:
