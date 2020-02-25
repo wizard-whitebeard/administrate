@@ -22,7 +22,6 @@ jobs:
     steps:
       - checkout
       - run: bundle install --path vendor/bundle
-      # Wait for PG to be available
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run: cp .sample.env .env
       - run: bundle exec rake db:setup
