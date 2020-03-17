@@ -1,0 +1,17 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Encouragement
+
+on: push
+
+jobs:
+  Give-props:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Commit Comment
+      uses: peter-evans/commit-comment@v1.1.0
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        # The contents of the comment.
+        body: 😍
