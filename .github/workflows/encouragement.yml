@@ -18,4 +18,4 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         # The contents of the comment.
-        body: ${{env.encouragement}}
+        body: ${process.env.encouragement}
