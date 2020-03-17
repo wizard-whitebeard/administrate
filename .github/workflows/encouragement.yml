@@ -9,9 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Write encouragement to file
+      run: echo "Love this, ${{github.actor}} 😍" >> encouragement.txt
+    - name: Read file an environment variable
+      run: encouragement=$(cat encouragement.txt)
     - name: Commit Comment
       uses: peter-evans/commit-comment@v1.1.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         # The contents of the comment.
-        body: Love this, ${{github.actor}} 😍
+        body: ${{encouragement}}
