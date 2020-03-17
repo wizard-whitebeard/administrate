@@ -16,4 +16,4 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         # The contents of the comment.
-        body: $(cat encouragement.txt)
+        body: cat encouragement.txt
