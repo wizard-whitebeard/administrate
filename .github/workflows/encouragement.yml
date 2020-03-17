@@ -11,13 +11,9 @@ jobs:
     steps:
     - name: Write encouragement to file
       run: echo "Love this, ${{github.actor}} 😍" >> encouragement.txt
-    - name: Read file an environment variable
-      run: export encouragement=$(cat encouragement.txt)
-    - name: Test env var
-      run: echo ${encouragement}
     - name: Commit Comment
       uses: peter-evans/commit-comment@v1.1.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         # The contents of the comment.
-        body: ${process.env.encouragement}
+        body: $(cat encouragement.txt)
