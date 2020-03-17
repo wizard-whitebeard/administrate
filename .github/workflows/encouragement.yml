@@ -14,4 +14,4 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         # The contents of the comment.
-        body: 😍
+        body: Love this ${{github.actor}} 😍
