@@ -7,11 +7,7 @@
 
 
 
-### Warning:
-
-Administrate is still pre-1.0,
-and there may be occasional breaking changes to the API.
-Check the [release notes] for important updates.
+### Warnt updates.
 
 [release notes]: https://github.com/thoughtbot/administrate/releases
 
