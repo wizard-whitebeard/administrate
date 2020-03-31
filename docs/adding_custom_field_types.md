@@ -5,17 +5,7 @@ you can create an `Administrate::Field` object to help display
 the custom data type across the dashboard.
 
 `Administrate::Field` objects consist of two parts:
-a Ruby class and associated views.
-
-For example, let's create a `Field` that displays [Gravatars] based on an email.
-
-[Gravatars]: https://gravatar.com/
-
-First, we'll run a generator to set us up with the files we need:
-
-```bash
-rails generate administrate:field gravatar
-```
+a Ruby cla
 
 This creates a few files:
 
