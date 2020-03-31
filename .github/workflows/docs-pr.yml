@@ -4,7 +4,6 @@ name: CI for Docs PR
 # events but only for the master branch
 on:
   pull_request:
-    types: [created, synchronize]
     paths: 'docs/**'
 
 jobs:
