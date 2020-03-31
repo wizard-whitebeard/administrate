@@ -4,7 +4,6 @@ If your application deals with a nonstandard data type,
 you can create an `Administrate::Field` object to help display
 the custom data type across the dashboard.
 
-`Administrate::Field` objects consist of two parts:
 a Ruby class and associated views.
 
 For example, let's create a `Field` that displays [Gravatars] based on an email.
