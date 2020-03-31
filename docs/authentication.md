@@ -4,12 +4,6 @@ Authentication is left for you to implement after you install Administrate into
 your app. It's expected that you can plugin your existing authentication
 system.
 
-The base `Admin::ApplicationController` has a `TODO` to be completed:
-
-```ruby
-class Admin::ApplicationController < Administrate::ApplicationController
-  before_action :authenticate_admin
-
   def authenticate_admin
     # TODO Add authentication logic here.
   end
