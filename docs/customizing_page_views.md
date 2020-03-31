@@ -8,7 +8,14 @@ you can write custom Rails views.
 The easiest way to get started is by using the built-in generators.
 In order to change the appearance of views for all resource types,
 call the generators with no arguments.
+
 show.html.erb
+```bash	
+rails generate administrate:views:index	
+ # -> app/views/admin/application/index.html.erb	
+ # -> app/views/admin/application/_collection.html.erb	
+rails generate administrate:views:show	
+ # -> app/views/admin/application/show.html.erb
 
 rails generate administrate:views:edit
  # -> app/views/admin/application/edit.html.erb
