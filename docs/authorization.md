@@ -3,9 +3,6 @@
 The default configuration of Administrate is "authenticate-only" - once a
 user is authenticated, that user has access to every action of every object.
 
-You can add more fine-grained authorization by overriding methods in the
-controller.
-
 ## Using Pundit
 
 If your app already uses [Pundit](https://github.com/elabs/pundit) for
