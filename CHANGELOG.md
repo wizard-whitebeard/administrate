@@ -11,9 +11,6 @@
 ## Changes
 
 ### 0.12.0 (September 10, 2019)
-
-* [COMPAT] [#1331] Drop active_job from the dependencies.
-* [COMPAT] [#1402] Upgrade to Rails 6.
 * [COMPAT] [#1402] Drop support for Ruby 2.4.
 * [COMPAT] [#1406] Use Zeitwerk for loading models in Rails 6.
 * [i18n] [#1400] Fix unusable expressions and wrong spacing in Korean.
