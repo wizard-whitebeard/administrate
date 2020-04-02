@@ -8,10 +8,6 @@
   functionality, or improves oance increase.
 * `[DOC]`: Documentation changes. No changes to the library's behavior.
 
-## Changes
-
-### 0.12.0 (September 10, 2019)
-* [COMPAT] [#1402] Drop support for Ruby 2.4.
 * [COMPAT] [#1406] Use Zeitwerk for loading models in Rails 6.
 * [i18n] [#1400] Fix unusable expressions and wrong spacing in Korean.
 * [BUGFIX] [#1285] Added icons to copied templates.
