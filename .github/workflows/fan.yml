@@ -37,6 +37,7 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
+      - run: sleep 5 && exit 1
     
   release:
     runs-on: ubuntu-latest
