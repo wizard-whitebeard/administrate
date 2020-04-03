@@ -37,7 +37,7 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-      - run: sleep 5 && exit 1
+      - run: sleep 5 && exit 0
     
   release:
     needs: [build]
