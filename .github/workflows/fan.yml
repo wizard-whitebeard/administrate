@@ -40,6 +40,7 @@ jobs:
       - run: sleep 5 && exit 1
     
   release:
+    needs: [build]
     runs-on: ubuntu-latest
     
     steps: 
