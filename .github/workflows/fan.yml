@@ -99,3 +99,6 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
+      - uses: technote-space/workflow-conclusion-action@v1
+      - name: Report results
+        run: echo "${{env.WORKFLOW_CONCLUSION}}"
