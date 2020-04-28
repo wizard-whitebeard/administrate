@@ -47,3 +47,4 @@ jobs:
       run: bundle exec appraisal install
     - name: Run appraisal
       run: bundle exec appraisal rake
+    - run: sleep 20 && exit 0
