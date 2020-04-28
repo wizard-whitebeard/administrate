@@ -1,0 +1,49 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      PGHOST: localhost
+      PGUSER: administrate
+      RAILS_ENV: test
+
+    services:
+      postgres:
+        image: postgres:10.1-alpine
+        env:
+          POSTGRES_USER: administrate
+          POSTGRES_DB: ruby25
+          POSTGRES_PASSWORD: ""
+        ports:
+        - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Ruby
+      uses: eregon/use-ruby-action@master
+      with:
+        ruby-version: 2.6.3
+    - name: Cache dependencies
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: administrate-2.6.3-${{ hashFiles('Gemfile.lock') }}
+    - name: Install postgres headers
+      run: sudo apt-get install libpq-dev
+    - name: Install dependencies
+      run: bundle install --path vendor/bundle
+    - name: Setup environment configuration
+      run: cp .sample.env .env
+    - name: Setup database
+      run: bundle exec rake db:setup
+    - name: Run tests
+      run: bundle exec rake
+    - name: Install appraisal
+      run: bundle exec appraisal install
+    - name: Run appraisal
+      run: bundle exec appraisal rake
