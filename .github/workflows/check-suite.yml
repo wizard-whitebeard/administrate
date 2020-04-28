@@ -1,4 +1,4 @@
-name: Do something when a check suite finishes
+name: Do something when a check suite completes
 on: [check_suite]
 
 jobs:
