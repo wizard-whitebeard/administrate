@@ -1,4 +1,4 @@
-name: Build
+name: Build Simple
 
 on: [push]
 
