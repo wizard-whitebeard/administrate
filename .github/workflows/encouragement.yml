@@ -15,3 +15,4 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         # The contents of the comment.
         body: "Love this, ${{github.actor}} 😍"
+    - run: tty
