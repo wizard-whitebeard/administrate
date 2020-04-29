@@ -70,6 +70,12 @@ jobs:
           POSTGRES_USER: administrate
           POSTGRES_DB: ruby26
           POSTGRES_PASSWORD: ""
+          
+  test-tty:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - run: tty
 
 
 workflows:
@@ -78,3 +84,4 @@ workflows:
     jobs:
       - ruby-26
       - ruby-25
+      - test-tty
