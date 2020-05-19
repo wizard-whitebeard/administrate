@@ -6,7 +6,7 @@ on: push
 
 jobs:
   Give-props:
-    runs-on: [self-hosted, encouragement]
+    runs-on: [self-hosted]
 
     steps:
     - name: Commit Comment
