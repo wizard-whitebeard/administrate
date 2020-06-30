@@ -3,11 +3,10 @@ on:
   workflow_dispatch:
     inputs:
       log-level:     
-        description: 'Tags'
         required: true
         default: 'warning'
       tags:
-        description: 'Filter test scenarios'        
+        description: 'Tags (filter test scenarios)'        
 
 jobs:
   full_tests:
