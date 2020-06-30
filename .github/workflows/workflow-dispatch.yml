@@ -2,7 +2,8 @@ name: Browser Automation Tests
 on: 
   workflow_dispatch:
     inputs:
-      log-level:     
+      log-level:
+        description: 'Log level'     
         required: true
         default: 'warning'
       tags:
