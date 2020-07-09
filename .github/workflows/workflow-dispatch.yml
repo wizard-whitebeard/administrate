@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo "Payload: ${{ JSON.stringify(github.context.payload) }}"
+        echo "Payload: ${{ github.context.payload }}"
 
     - run: |
         echo "Log level: ${{ github.event.inputs.logLevel }}"
