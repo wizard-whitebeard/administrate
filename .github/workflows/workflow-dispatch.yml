@@ -13,11 +13,9 @@ jobs:
   print_inputs:
     runs-on: ubuntu-latest
     steps:
-    - name: Print payload
-      env:
-        github: "test"
+    - name: Print context
       run: |
-        echo "Payload: ${{ github.context.payload }}"
+        echo "Payload: ${{ github.context }}"
 
 
     - run: |
