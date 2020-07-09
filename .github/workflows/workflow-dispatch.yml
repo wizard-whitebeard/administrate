@@ -1,21 +1,13 @@
 name: Browser Automation Tests
 on: 
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'     
-        required: true
-        default: 'warning'
-      tags:
-        description: 'Test scenario tags'        
-
+  workflow_dispatch
 jobs:
   print_inputs:
     runs-on: ubuntu-latest
     steps:
     - name: Print context
       run: |
-        echo "Payload: ${{ github.context }}"
+        echo "Payload: ${{ github.event.inputs.issueId }}"
 
 
     - run: |
