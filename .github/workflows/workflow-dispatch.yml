@@ -13,10 +13,12 @@ jobs:
   print_inputs:
     runs-on: ubuntu-latest
     steps:
-    - run: |
+    - name: Print payload
+      env:
+        github: "test"
+      run: |
         echo "Payload: ${{ github.context.payload }}"
-        with:
-          github: "what"
+
 
     - run: |
         echo "Log level: ${{ github.event.inputs.logLevel }}"
