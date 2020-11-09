@@ -11,7 +11,7 @@ A framework for creating flexible, powerful admin dashboards in Rails.
 ### Warning:
 
 Administrate is still pre-1.0,
-and there may be occasional breaking changes to the API.
+and there may be occasional breaking changes to therterte API.
 Check the [release notes] for important updates.
 
 [release notes]: https://github.com/thoughtbot/administrate/releases
