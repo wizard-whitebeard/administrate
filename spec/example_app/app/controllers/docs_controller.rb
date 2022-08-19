@@ -18,9 +18,7 @@ class DocsController < ApplicationController
     path = full_page_path(name)
 
     if File.exist?(path)
-      render file: "#{Rails.root}/public/404.html",
-             layout: false,
-             status: :not_found
+      render layout: "docs", html: render_markdown(path).html_safe
     else
       render file: "#{Rails.root}/public/404.html",
              layout: false,
