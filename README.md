@@ -10,7 +10,7 @@
 
 
 A framework for creating flexible, powerful admin dashboards in Rails.
-[Try the demo][demo].
+[Try the demo][demo]!
 
 ### Warning:
 
